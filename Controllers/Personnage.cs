@@ -18,15 +18,32 @@ public class PersonnageController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet(Name = "GetPersonnage")]
-    public IEnumerable<Personnage> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new Personnage
+
+     [HttpGet]
+        public IActionResult Get()
         {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
-    }
+            // Logique de récupération des données
+            return Ok("Hello World");
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] string data)
+        {
+            // Logique de création des données
+            return Created("", data);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] string data)
+        {
+            // Logique de mise à jour des données
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            // Logique de suppression des données
+            return NoContent();
+        }
 }
