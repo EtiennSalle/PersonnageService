@@ -14,20 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<PersonnageManager>();
 builder.Services.AddTransient<MappingService>();
-ModelePersonnage personnage = new ModelePersonnage(
-    "azeqsaeazed",
-    "Chocolat",
-    "bruges", 
-    DateOnly.FromDateTime(new DateTime(1995,03,09))
-    );
 var mongoClient = new MongoClient("mongodb://localhost:27017");
 var database = mongoClient.GetDatabase("GameGuesser");
 builder.Services.AddSingleton(database);
-PersonnageManager PM = new PersonnageManager(database);
-
-PM.CreerPersonnage(personnage);
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
