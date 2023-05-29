@@ -1,13 +1,12 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace PersonnageService;
+namespace PersonnageService.Model;
 
-public class Personnage
+public class ModelePersonnage
 {
     [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public String Id { get; set; }
     public String Name { get; set; }
 
     public String Class { get; set; }
@@ -16,17 +15,21 @@ public class Personnage
 
 
 
-    public Personnage(String Name, String Class,DateOnly BirthDate){
+    public ModelePersonnage(String Id,String Name, String Class,DateOnly BirthDate){
 
+        this.Id=Id;
         this.Name=Name;
-        this.Class=Name;
+        this.Class=Class;
         this.BirthDate=BirthDate;
 
     }
 
-        public Personnage(){
+        public ModelePersonnage(){
+
+            this.Id="5";
             this.Name="";
             this.Class="None";
 
     }
+
 }
